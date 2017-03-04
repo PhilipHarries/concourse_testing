@@ -1,0 +1,22 @@
+---
+jobs:
+- name: say_hello
+  public: true
+  serial: true
+  plan:
+  - get: ph-concourse-testing
+  - get: git-check-timer
+    trigger: true
+  - task: hello-world
+    file: ph-concourse-testing/fly_pipelines/say_hello.yml
+
+resources:
+- name: ph-concourse-testing
+  type: git
+  source:
+    uri: https://github.com/PhilipHarries/concourse_testing.git
+
+- name: git-check-timer
+  type: time
+  source:
+    interval: 2m
