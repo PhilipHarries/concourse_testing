@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 need_start=""
 for X in concourse-db concourse-worker concourse-web;do
